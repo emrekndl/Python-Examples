@@ -1,3 +1,7 @@
-# Puzzle Fifteen Game Python Project
+# Image Resize With Python
 
-![ScreenShot](https://github.com/emrekndl/Python/blob/master/puzzleFifteen/screenShot1.png)
+Usage: python3 imageResize.py newWidth newHeight infile outfile
+
+## Python Library Instalation
+
+pip install -r requirements.txt
