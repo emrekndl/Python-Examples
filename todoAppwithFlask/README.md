@@ -1,11 +1,11 @@
 ## todoAppwithFlask
 # Todo App with Flask
 
-![Screenshot](https://github.com/emrekndl/todoAppwithFlask/blob/master/screenShot1.png)
+![Screenshot](screenShot1.png)
 ## -
-![Screenshot](https://github.com/emrekndl/todoAppwithFlask/blob/master/screenShot2.png)
+![Screenshot](screenShot2.png)
 ## -
-![Screenshot](https://github.com/emrekndl/todoAppwithFlask/blob/master/screenShot3.png)
+![Screenshot](screenShot3.png)
 
 ## Installing:
 Clone the repository:
