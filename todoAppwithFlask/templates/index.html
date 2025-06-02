@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>TODO</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/simple-notifications-solution/dist/Notifications.css">
+    </head>
+    <body>
+        <div style="margin-top:100px;" class="container is-family-monospace">
+            <h3 class="label is-large has-text-primary"><b>Yapılacaklar Listesi</b></h3>
+            <hr>
+            <form action="/ekle" method="post">
+                <div class="field">
+                <label class="label is-medium">Başlık</label>
+                <div class="control has-icons-left has-icons-right">
+                <input class="input is-primary is-medium has-text-dark" type="text" name="title" placeholder="Başlığı giriniz">
+                <span class="icon is-left">
+                <i class="fas fa-tasks has-text-primary"></i>
+                </span>
+                <span class="icon is-right">
+                <i class="fas fa-check"></i>
+                </span>
+                </div>
+                </div>
+
+                <div class="field">
+                <label class="label is-medium">İçerik</label>
+                <div class="control has-icons-left has-icons-right">
+                <textarea class=" textarea is-primary is-medium has-text-dark"  type="text" name="content" placeholder="İçeriği giriniz"></textarea>
+                </div>
+                </div>
+
+                <button class="button is-primary is-medium has-text-weight-semibold" type="submit" name="eklebtn">Ekle</button>
+            </form>
+            <br>
+
+            {% if todoAll == [] %}
+                <div class="notification is-warning has-text-white has-text-weight-semibold" data-close="self">Herhangi bir görev bulunmuyor.</div>
+                <!--<p class="notification">
+                    This one needs user's action.
+                <button class="delete" type="button">Close</button>
+                </p>-->
+
+            {% else %}
+            <table class="table table is-fullwidth is-hoverable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Başlık</th>
+                        <th>İçerik</th>
+                        <th>Durum</th>
+                        <th>Tamamla</th>
+                        <th>Sil</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for todo in todoAll %}
+                    <tr>
+                        <th>{{ todo.id }}</th>
+                        <td>
+                            <div class="control">
+                            <div class="tags has-addons">
+                            <a class="tag is-link has-text-weight-semibold" href="/details/{{todo.id}}">{{ todo.title }}</a>
+                            </div>
+                            </td>
+                        <td>{{ todo.content }}</td>
+                        <td>
+                            {% if todo.status %}
+                            <p class="has-text-success has-text-weight-semibold">Tamamlandı</p>
+                            {% else %}
+                            <p class="has-text-warning has-text-weight-semibold">Tamamlanmadı</p>
+                            {% endif %}
+                        </td>
+                        <td><a href="/status/{{todo.id}}" class="button is-info is-normal is-focused has-text-weight-semibold">Tamamla</a></td>
+                        <td><a href="/delete/{{todo.id}}" class="button is-danger is-normal is-focused has-text-weight-semibold">Sil</a></td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+            {% endif %}
+
+        </div>
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+        <script src="https://unpkg.com/simple-notifications-solution/dist/Notifications.js"></script>
+        <script>
+            var notifications = new Notifications();
+            notifications.init();
+        </script>
+    </body>
+</html>

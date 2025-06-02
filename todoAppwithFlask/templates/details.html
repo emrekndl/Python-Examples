@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>İçerik</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    </head>
+    <body>
+        <div style="margin-top:100px;" class="container is-family-monospace">
+            <h3 class="label is-large has-text-primary"><b>Görev İçeriği</b></h3>
+            <hr>
+            <article class="message is-link is-hoverable">
+                <div class="message-header">
+                    <p>{{ todo.title }}</p>
+                </div>
+                <div class="message-body">
+                    <p>{{ todo.content }}</p>
+                </div>
+            </article>
+            <hr>
+
+            {% if todo.status %}
+            <p class="has-text-success has-text-weight-semibold">Durum: Tamamlandı</p>
+            {% else %}
+            <p class="has-text-warning has-text-weight-semibold">Durum: Tamamlanmadı</p>
+            {% endif %}
+            <a href="/" style="float:right;width:100px;" class="button is-primary is-normal is-focused has-text-weight-semibold">Geri</a>
+        </div>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    </body>
+</html>
