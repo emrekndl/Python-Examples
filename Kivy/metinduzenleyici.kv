@@ -1,0 +1,72 @@
+<metinDuzenleyici>:
+BoxLayout:
+    orientation: "vertical"
+    exit_on_escape: False
+    TextInput:
+        size_hint_y: 90
+        id: metin
+        multiline: True
+
+    BoxLayout:
+        size_hint_y: 10
+        Button:
+            text: "Aç"
+            on_press: app.dosyaAcDialog()
+        Button:
+            text: "Kaydet"
+            on_press: app.kaydetDialog()
+        Button:
+            text: "Temizle"
+            on_press: app.temizle(metin)
+<kaydetForm>:
+    title: "Dosya Kaydet"
+    size_hint: (.9, .9)
+    BoxLayout:
+        orientation: 'vertical'
+
+        FileChooserListView:
+            size_hint_y: 80
+            id: dosyaSecim
+            filters: ['*.*']
+            path: app.sonPatika
+            on_selection: app.kaydetDosyaAdi(root)
+
+        BoxLayout:
+            size_hint_y: 10
+            Label:
+                text: "Dosya Adı:"
+                size_hint_x: 20
+            TextInput:
+                id: dosyaAdi
+                multiline: False
+                size_hint_x: 80
+
+
+        BoxLayout:
+            size_hint_y: 10
+            Button:
+                text: "Kaydet"
+                on_press: app.kaydetIslemi(root); root.dismiss()
+            Button:
+                text: "Vazgeç"
+                on_press: root.dismiss()
+<dosyaAcForm>:
+    title: "Dosya Aç"
+    size_hint: (.9, .9)
+    BoxLayout:
+        orientation: 'vertical'
+
+        FileChooserListView:
+            size_hint_y: 90
+            id: dosyaSecim
+            filters: ['*.*']
+            path: app.sonPatika
+
+        BoxLayout:
+            size_hint_y: 10
+            Button:
+                text: "Aç"
+                on_press: app.dosyaOku(dosyaSecim); root.dismiss()
+            Button:
+                text: "Vazgeç"
+                on_press: root.dismiss()
